@@ -3,7 +3,7 @@ const path = require("path");
 
 const dotenv = require("dotenv");
 const investorRoutes = require("./routes/investorRoutes");
-const dashboardRoutes = require("./routes/dashboardRoutes");
+const dashboardRoutes = require("./routes/DashboardRoutes");
 
 
 const profileRoutes = require("./routes/profileRoutes");
