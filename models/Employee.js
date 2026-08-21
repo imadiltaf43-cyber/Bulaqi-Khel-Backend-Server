@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 
 const employeeSchema = new mongoose.Schema(
   {
+    // =====================================
+    // Basic Employee Information
+    // =====================================
+
     employeeId: {
       type: String,
       required: true,
@@ -34,15 +38,88 @@ const employeeSchema = new mongoose.Schema(
       trim: true,
     },
 
+    // =====================================
+    // Organizational Hierarchy
+    // =====================================
+
+    employeeType: {
+      type: String,
+      enum: [
+        "Management",
+        "Department",
+        "Danin Chitral",
+        "Dara Adam Khel",
+      ],
+      default: "Department",
+      required: true,
+    },
+
+    section: {
+      type: String,
+      default: "",
+      trim: true,
+    },
+
     department: {
       type: String,
-      required: true,
+      default: "",
+      trim: true,
     },
 
     designation: {
       type: String,
       required: true,
+      trim: true,
     },
+
+    // =====================================
+    // Reporting Hierarchy
+    // =====================================
+
+    reportsTo: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Employee",
+      default: null,
+    },
+
+    isManagingDirector: {
+      type: Boolean,
+      default: false,
+    },
+
+    // Controls display order
+    order: {
+      type: Number,
+      default: 0,
+    },
+
+    // =====================================
+    // Office / Location
+    // =====================================
+
+    office: {
+      type: String,
+      enum: [
+        "Chitral",
+        "Darra",
+        "Head Office",
+        "Other",
+      ],
+      default: "Head Office",
+    },
+
+    // =====================================
+    // Employee Message / Bio
+    // =====================================
+
+    message: {
+      type: String,
+      default: "",
+    },
+
+    // =====================================
+    // Joining Information
+    // =====================================
 
     joiningDate: {
       type: Date,
@@ -54,10 +131,18 @@ const employeeSchema = new mongoose.Schema(
       default: "",
     },
 
+    // =====================================
+    // Profile Image
+    // =====================================
+
     profileImage: {
-  type: String,
-  default: "",
-},
+      type: String,
+      default: "",
+    },
+
+    // =====================================
+    // Status
+    // =====================================
 
     status: {
       type: String,
@@ -70,4 +155,7 @@ const employeeSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("Employee", employeeSchema);
+module.exports = mongoose.model(
+  "Employee",
+  employeeSchema
+);
