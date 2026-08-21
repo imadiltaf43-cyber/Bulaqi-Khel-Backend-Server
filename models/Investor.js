@@ -8,12 +8,6 @@ const investorSchema = new mongoose.Schema(
         trim:true,
     },
 
-    kandy:{
-        type:String,
-        required:true,
-        trim:true,
-    },
-
     village:{
         type:String,
         enum:["Barkali","Attariwal"],

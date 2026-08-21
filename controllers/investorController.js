@@ -64,7 +64,6 @@ exports.createInvestor = async (req, res) => {
   try {
     const investor = await Investor.create({
       guardianName: req.body.guardianName,
-      kandy: req.body.kandy,
       village: req.body.village,
       shares: req.body.shares,
       remarks: req.body.remarks,
@@ -93,7 +92,6 @@ exports.updateInvestor = async (req, res) => {
       req.params.id,
       {
         guardianName: req.body.guardianName,
-        kandy: req.body.kandy,
         village: req.body.village,
         shares: req.body.shares,
         remarks: req.body.remarks,
